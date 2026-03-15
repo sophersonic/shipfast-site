@@ -20,1075 +20,576 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShipFast - Your Website, Built and Shipped in 48 Hours</title>
-<meta name="description" content="Describe your project, we build it from scratch in 48 hours. Custom-coded, responsive websites and web apps. No templates, no WordPress. You own the code.">
-<meta property="og:title" content="ShipFast - Your Website, Built and Shipped in 48 Hours">
-<meta property="og:description" content="Custom websites and web apps, hand-coded and delivered in 48 hours. From CHF 249.">
+<title>PlanForge - AI-Powered Business Plan Generator</title>
+<meta name="description" content="Build investor-ready business plans with AI. PlanForge guides you through every section, generating professional content tailored to your business.">
+<meta property="og:title" content="PlanForge - AI-Powered Business Plan Generator">
+<meta property="og:description" content="Build investor-ready business plans with AI. Guided, step-by-step, professional.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shipfast.site">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* ===== RESET & BASE ===== */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #0a0a0a;
-  --bg-elevated: #111111;
-  --bg-card: #161616;
-  --bg-card-hover: #1a1a1a;
-  --border: #222222;
-  --border-light: #2a2a2a;
-  --text-primary: #f5f5f5;
-  --text-secondary: #a0a0a0;
-  --text-tertiary: #666666;
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
-  --accent-subtle: rgba(59, 130, 246, 0.1);
-  --accent-glow: rgba(59, 130, 246, 0.15);
-  --radius: 12px;
-  --radius-sm: 8px;
-  --max-width: 1120px;
-  --transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --teal-500: #0F766E;
+  --teal-400: #14B8A6;
+  --teal-300: #2DD4BF;
+  --stone-50: #FAFAF9;
+  --stone-100: #F5F5F4;
+  --stone-200: #E7E5E4;
+  --stone-400: #A8A29E;
+  --stone-500: #78716C;
+  --stone-600: #57534E;
+  --stone-700: #44403C;
+  --stone-800: #292524;
+  --stone-900: #1C1917;
+  --stone-950: #0C0A09;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
-  color: var(--text-primary);
-  font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* ===== UTILITIES ===== */
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.section {
-  padding: clamp(64px, 10vw, 120px) 0;
-}
-
-.section-label {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 16px;
-}
-
-.section-title {
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-
-.section-subtitle {
-  font-size: 17px;
-  color: var(--text-secondary);
-  max-width: 560px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--stone-800);
+  background: var(--stone-50);
+  -webkit-font-smoothing: antialiased;
   line-height: 1.6;
 }
 
-/* ===== SCROLL REVEAL ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.display-font {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===== NAV ===== */
-.nav {
+/* NAV */
+nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 16px 0;
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-.nav.scrolled {
-  border-bottom-color: var(--border);
-}
-
-.nav-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 24px;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: rgba(250, 250, 249, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--stone-200);
 }
 
-.nav-logo {
+.logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 18px;
+  gap: 0.625rem;
+  text-decoration: none;
+  color: var(--stone-900);
+}
+
+.logo svg {
+  width: 32px;
+  height: 32px;
+}
+
+.logo span {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
+  font-size: 1.25rem;
   letter-spacing: -0.02em;
-}
-
-.nav-logo svg {
-  width: 28px;
-  height: 28px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-
-.nav-links a {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: color var(--transition);
-}
-
-.nav-links a:hover {
-  color: var(--text-primary);
 }
 
 .nav-cta {
   display: inline-flex;
   align-items: center;
-  padding: 8px 20px;
-  background: var(--accent);
-  color: #fff !important;
-  border-radius: var(--radius-sm);
-  font-size: 14px;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: var(--teal-500);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
   font-weight: 600;
-  transition: background var(--transition), transform var(--transition);
+  font-size: 0.875rem;
+  transition: background 0.2s;
 }
 
-.nav-cta:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-}
+.nav-cta:hover { background: #0D655D; }
 
-.nav-mobile-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--text-primary);
-  cursor: pointer;
-  padding: 4px;
-}
-
-/* ===== HERO ===== */
+/* HERO */
 .hero {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
   position: relative;
-  padding-top: 80px;
+  overflow: hidden;
 }
 
-.hero-content {
-  max-width: 800px;
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(15, 118, 110, 0.06) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.hero-badge {
+.badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: var(--accent-subtle);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--teal-500);
   border-radius: 100px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--accent);
-  margin-bottom: 32px;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(15, 118, 110, 0.12);
 }
 
-.hero-badge span {
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+.badge svg {
+  width: 16px;
+  height: 16px;
 }
 
 .hero h1 {
-  font-size: clamp(40px, 7vw, 72px);
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
-  line-height: 1.05;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.1;
   letter-spacing: -0.03em;
-  margin-bottom: 24px;
+  color: var(--stone-900);
+  max-width: 700px;
+  margin-bottom: 1.5rem;
 }
 
 .hero h1 .accent {
-  color: var(--accent);
+  color: var(--teal-500);
 }
 
-.hero-sub {
-  font-size: clamp(17px, 2vw, 20px);
-  color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 580px;
-  margin-bottom: 40px;
+.hero p {
+  font-size: 1.125rem;
+  color: var(--stone-500);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
 }
 
-.hero-actions {
+.cta-group {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  background: var(--accent);
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--teal-500);
   color: #fff;
-  border-radius: var(--radius-sm);
-  font-size: 15px;
+  border-radius: 10px;
+  text-decoration: none;
   font-weight: 600;
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  font-size: 1rem;
+  transition: all 0.2s;
   border: none;
   cursor: pointer;
 }
 
 .btn-primary:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.25);
+  background: #0D655D;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(15, 118, 110, 0.25);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
   background: transparent;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-sm);
-  font-size: 15px;
+  color: var(--stone-700);
+  border: 1px solid var(--stone-200);
+  border-radius: 10px;
+  text-decoration: none;
   font-weight: 500;
-  transition: color var(--transition), border-color var(--transition), transform var(--transition);
-  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
 }
 
 .btn-secondary:hover {
-  color: var(--text-primary);
-  border-color: var(--text-tertiary);
-  transform: translateY(-2px);
+  border-color: var(--stone-400);
+  background: var(--stone-100);
 }
 
-.hero-proof {
-  margin-top: 64px;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
+/* HOW IT WORKS */
+.section {
+  padding: 5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.hero-proof-item {
-  display: flex;
-  flex-direction: column;
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
 }
 
-.hero-proof-item strong {
-  font-size: 24px;
+.section-header h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
+  font-size: 2rem;
   letter-spacing: -0.02em;
+  color: var(--stone-900);
+  margin-bottom: 0.75rem;
 }
 
-.hero-proof-item span {
-  font-size: 13px;
-  color: var(--text-tertiary);
-  margin-top: 2px;
+.section-header p {
+  color: var(--stone-500);
+  font-size: 1.0625rem;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-/* ===== HOW IT WORKS ===== */
-.steps-grid {
+.steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 48px;
+  gap: 2rem;
 }
 
-.step-card {
-  padding: 32px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: border-color var(--transition), transform var(--transition);
-}
-
-.step-card:hover {
-  border-color: var(--border-light);
-  transform: translateY(-2px);
+.step {
+  text-align: center;
+  padding: 2rem 1.5rem;
 }
 
 .step-number {
-  display: flex;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--accent-subtle);
-  border: 1px solid rgba(59, 130, 246, 0.15);
-  border-radius: 10px;
-  font-size: 16px;
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--teal-500);
+  border-radius: 12px;
   font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 20px;
+  font-size: 1.125rem;
+  margin-bottom: 1.25rem;
 }
 
-.step-card h3 {
-  font-size: 18px;
+.step h3 {
   font-weight: 600;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
+  font-size: 1.0625rem;
+  color: var(--stone-800);
+  margin-bottom: 0.5rem;
 }
 
-.step-card p {
-  font-size: 15px;
-  color: var(--text-secondary);
+.step p {
+  color: var(--stone-500);
+  font-size: 0.9375rem;
   line-height: 1.6;
 }
 
-/* ===== WHAT YOU GET ===== */
-.deliverables {
+/* FEATURES */
+.features-bg {
+  background: var(--stone-100);
+}
+
+.features {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  margin-top: 48px;
-  align-items: start;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
-.deliverables-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.feature {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.75rem;
+  border: 1px solid var(--stone-200);
+  transition: border-color 0.2s;
 }
 
-.deliverables-list li {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
+.feature:hover {
+  border-color: var(--stone-400);
 }
 
-.deliverable-icon {
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+.feature-icon {
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent-subtle);
-  border-radius: 8px;
-  margin-top: 2px;
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--teal-500);
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
-.deliverable-icon svg {
-  width: 18px;
-  height: 18px;
-  color: var(--accent);
-}
-
-.deliverable-content h4 {
-  font-size: 16px;
+.feature h3 {
   font-weight: 600;
-  margin-bottom: 4px;
+  font-size: 0.9375rem;
+  color: var(--stone-800);
+  margin-bottom: 0.375rem;
 }
 
-.deliverable-content p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.5;
+.feature p {
+  color: var(--stone-500);
+  font-size: 0.875rem;
+  line-height: 1.6;
 }
 
-.deliverables-highlight {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 40px;
-}
-
-.deliverables-highlight h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
-}
-
-.deliverables-highlight p {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-
-.deliverables-highlight .callout {
+/* PRICING */
+.pricing {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-top: 24px;
-  padding: 16px;
-  background: var(--accent-subtle);
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.5;
+  align-items: stretch;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.deliverables-highlight .callout svg {
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  color: var(--accent);
-  margin-top: 2px;
-}
-
-/* ===== PRICING ===== */
-#pricing {
-  background: var(--bg);
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.pricing-card {
+.price-card {
+  background: #fff;
+  border: 1px solid var(--stone-200);
+  border-radius: 14px;
+  padding: 2.5rem 2rem;
+  flex: 1;
+  min-width: 280px;
+  max-width: 340px;
+  text-align: center;
   position: relative;
-  padding: 36px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  transition: border-color var(--transition), transform var(--transition);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.pricing-card:hover {
-  border-color: var(--border-light);
-  transform: translateY(-2px);
+.price-card:hover {
+  border-color: var(--teal-400);
+  box-shadow: 0 4px 24px rgba(15, 118, 110, 0.08);
 }
 
-.pricing-card.featured {
-  border-color: var(--accent);
-  background: linear-gradient(180deg, rgba(59, 130, 246, 0.04) 0%, var(--bg-card) 100%);
+.price-card.featured {
+  border-color: var(--teal-500);
+  box-shadow: 0 4px 24px rgba(15, 118, 110, 0.12);
 }
 
-.pricing-card.featured::before {
-  content: 'Most popular';
+.price-card.featured::before {
+  content: 'Most Popular';
   position: absolute;
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 4px 16px;
-  background: var(--accent);
+  background: var(--teal-500);
   color: #fff;
-  font-size: 12px;
-  font-weight: 600;
+  padding: 0.25rem 1rem;
   border-radius: 100px;
-  letter-spacing: 0.02em;
-}
-
-.pricing-tier {
-  font-size: 14px;
+  font-size: 0.75rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-tertiary);
-  margin-bottom: 8px;
 }
 
-.pricing-name {
-  font-size: 20px;
+.price-card h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  margin-bottom: 8px;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
-.pricing-desc {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 24px;
-  min-height: 42px;
-}
-
-.pricing-price {
-  font-size: 40px;
+.price-amount {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  margin-bottom: 4px;
+  font-size: 2.5rem;
+  color: var(--stone-900);
+  margin-bottom: 0.25rem;
 }
 
-.pricing-price span {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text-tertiary);
+.price-amount .currency {
+  font-size: 1.125rem;
+  font-weight: 600;
+  vertical-align: top;
+  position: relative;
+  top: 0.5rem;
 }
 
-.pricing-note {
-  font-size: 13px;
-  color: var(--text-tertiary);
-  margin-bottom: 28px;
+.price-period {
+  color: var(--stone-500);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
 }
 
-.pricing-features {
+.price-features {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 32px;
-  flex-grow: 1;
+  text-align: left;
+  margin-bottom: 2rem;
 }
 
-.pricing-features li {
+.price-features li {
+  padding: 0.5rem 0;
+  color: var(--stone-600);
+  font-size: 0.875rem;
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.4;
+  gap: 0.5rem;
 }
 
-.pricing-features li svg {
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-  color: var(--accent);
-  margin-top: 2px;
-}
-
-.pricing-btn {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  text-align: center;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius-sm);
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-}
-
-.pricing-btn:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
-}
-
-.pricing-card:not(.featured) .pricing-btn {
-  background: transparent;
-  border: 1px solid var(--border-light);
-  color: var(--text-primary);
-}
-
-.pricing-card:not(.featured) .pricing-btn:hover {
-  border-color: var(--text-tertiary);
-  background: var(--bg-card-hover);
-  box-shadow: none;
-}
-
-.pricing-guarantee {
-  text-align: center;
-  margin-top: 32px;
-  font-size: 14px;
-  color: var(--text-tertiary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.pricing-guarantee svg {
-  width: 16px;
-  height: 16px;
-  color: var(--accent);
-}
-
-/* ===== FORM ===== */
-#contact {
-  background: var(--bg-elevated);
-}
-
-.form-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  margin-top: 48px;
-  align-items: start;
-}
-
-.form-info h3 {
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-
-.form-info p {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 24px;
-}
-
-.form-info .email-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--accent);
-  font-size: 15px;
-  font-weight: 500;
-  transition: opacity var(--transition);
-}
-
-.form-info .email-link:hover {
-  opacity: 0.8;
-}
-
-.form-info .email-link svg {
+.price-features li svg {
   width: 18px;
   height: 18px;
+  color: var(--teal-500);
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
-.intake-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.price-card .btn-primary,
+.price-card .btn-secondary {
+  width: 100%;
+  justify-content: center;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--stone-200);
+  padding: 2rem;
+  text-align: center;
+  color: var(--stone-400);
+  font-size: 0.8125rem;
 }
 
-.form-group label {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
+footer a {
+  color: var(--stone-500);
+  text-decoration: none;
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select {
-  padding: 12px 16px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--text-primary);
-  font-family: inherit;
-  font-size: 15px;
-  transition: border-color var(--transition);
-  outline: none;
-}
+footer a:hover { text-decoration: underline; }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  border-color: var(--accent);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.form-group select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  padding-right: 36px;
-}
-
-.form-group select option {
-  background: var(--bg);
-  color: var(--text-primary);
-}
-
-.form-submit {
-  margin-top: 4px;
-}
-
-/* ===== FAQ ===== */
-.faq-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.faq-item {
-  padding: 28px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-}
-
-.faq-item h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
-}
-
-.faq-item p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  border-top: 1px solid var(--border);
-  padding: 40px 0;
-}
-
-.footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.footer-left {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.footer-brand {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.footer-entity {
-  font-size: 13px;
-  color: var(--text-tertiary);
-}
-
-.footer-right {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.footer-right a {
-  font-size: 13px;
-  color: var(--text-tertiary);
-  transition: color var(--transition);
-}
-
-.footer-right a:hover {
-  color: var(--text-secondary);
-}
-
-/* ===== RESPONSIVE ===== */
+/* MOBILE */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    padding: 24px;
-    gap: 20px;
-  }
-
-  .nav-mobile-toggle {
-    display: block;
-  }
-
-  .hero {
-    min-height: auto;
-    padding-top: 120px;
-    padding-bottom: 80px;
-  }
-
-  .hero h1 {
-    font-size: clamp(32px, 8vw, 48px);
-  }
-
-  .hero-proof {
-    gap: 24px;
-  }
-
-  .steps-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .deliverables {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .pricing-grid {
-    grid-template-columns: 1fr;
-    max-width: 420px;
-  }
-
-  .form-wrapper {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .faq-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-right {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    justify-content: center;
-  }
+  nav { padding: 0.75rem 1.25rem; }
+  .hero { padding: 5rem 1.5rem 3rem; }
+  .hero h1 { font-size: 2.25rem; }
+  .steps { grid-template-columns: 1fr; gap: 1rem; }
+  .features { grid-template-columns: 1fr; }
+  .pricing { flex-direction: column; align-items: center; }
+  .price-card { max-width: 100%; }
+  .section { padding: 3rem 1.5rem; }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 0 16px;
-  }
-
-  .section {
-    padding: 56px 0;
-  }
-
-  .pricing-card {
-    padding: 28px;
-  }
+  .cta-group { flex-direction: column; width: 100%; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ShipFast logo">
-        <rect x="2" y="2" width="24" height="24" rx="6" stroke="currentColor" stroke-width="2"/>
-        <path d="M8 14h12M14 8l6 6-6 6" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      ShipFast
-    </a>
-    <div class="nav-links" id="navLinks">
-      <a href="#how-it-works">How it works</a>
-      <a href="#deliverables">What you get</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact" class="nav-cta">Start your project</a>
-    </div>
-    <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path id="menuIcon" d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
-  </div>
+<nav>
+  <a href="#" class="logo">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="8" fill="#0F766E"/>
+      <path d="M10 8L18 8C20.2091 8 22 9.79086 22 12V12C22 14.2091 20.2091 16 18 16H14V24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14 16L22 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+    <span>PlanForge</span>
+  </a>
+  <a href="https://www.perplexity.ai/computer/a/planforge-ai-business-plan-gen-CDXr6x9rSSumORG_.TtdRQ" class="nav-cta">
+    Start Free
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  </a>
 </nav>
 
 <!-- HERO -->
-<section class="hero section">
-  <div class="container">
-    <div class="hero-content reveal">
-      <div class="hero-badge">
-        <span></span>
-        Available now
-      </div>
-      <h1>Your website,<br>built and shipped<br>in <span class="accent">48 hours</span></h1>
-      <p class="hero-sub">Tell us what you need. We hand-code it from scratch. You get a fully functional, responsive website with clean source code you own. No templates. No WordPress. No nonsense.</p>
-      <div class="hero-actions">
-        <a href="#pricing" class="btn-primary">
-          See pricing
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-        <a href="#contact" class="btn-secondary">Describe your project</a>
-      </div>
-      <div class="hero-proof">
-        <div class="hero-proof-item">
-          <strong>48h</strong>
-          <span>Delivery time</span>
-        </div>
-        <div class="hero-proof-item">
-          <strong>100%</strong>
-          <span>You own the code</span>
-        </div>
-        <div class="hero-proof-item">
-          <strong>CHF 249</strong>
-          <span>Starting price</span>
-        </div>
-      </div>
-    </div>
+<section class="hero">
+  <div class="badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+    AI-Powered Business Planning
+  </div>
+  <h1 class="display-font">Build your business plan <span class="accent">with AI</span></h1>
+  <p>PlanForge walks you through every section of a professional business plan, generating investor-ready content tailored to your specific business.</p>
+  <div class="cta-group">
+    <a href="https://www.perplexity.ai/computer/a/planforge-ai-business-plan-gen-CDXr6x9rSSumORG_.TtdRQ" class="btn-primary">
+      Start Building
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+    <a href="#how-it-works" class="btn-secondary">See How It Works</a>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section class="section" id="how-it-works">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-label">How it works</p>
-      <h2 class="section-title">Three steps. That's it.</h2>
-      <p class="section-subtitle">No discovery calls. No endless email threads. Just describe, pay, and receive.</p>
+  <div class="section-header">
+    <h2 class="display-font">How it works</h2>
+    <p>Three simple steps to a complete, investor-ready business plan.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <h3>Answer guided questions</h3>
+      <p>Tell us about your business, customers, and goals through a focused, step-by-step process.</p>
     </div>
-    <div class="steps-grid">
-      <div class="step-card reveal">
-        <div class="step-number">1</div>
-        <h3>Describe your project</h3>
-        <p>Fill out the form below or email us. Tell us what you need: a landing page, a multi-page site, a web app. Share any references, copy, or brand assets you have.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-number">2</div>
-        <h3>We build it in 48 hours</h3>
-        <p>Our team hand-codes your site from scratch using clean HTML, CSS, and JavaScript (or React). Custom design, responsive layout, optimized for performance.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-number">3</div>
-        <h3>You get the finished site</h3>
-        <p>Receive the deployed website on your domain plus the complete source code. One round of revisions is included to make sure everything is exactly right.</p>
-      </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <h3>AI generates each section</h3>
+      <p>Watch as each section of your business plan is crafted in real time, tailored to your inputs.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <h3>Review, edit, and export</h3>
+      <p>Fine-tune every section, then export your complete business plan as a polished document.</p>
     </div>
   </div>
 </section>
 
-<!-- WHAT YOU GET -->
-<section class="section" id="deliverables" style="background: var(--bg-elevated);">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-label">What you get</p>
-      <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
-      <p class="section-subtitle">Every project includes these deliverables. No hidden extras.</p>
+<!-- FEATURES -->
+<section class="features-bg">
+  <div class="section">
+    <div class="section-header">
+      <h2 class="display-font">Everything you need</h2>
+      <p>Purpose-built tools for creating professional business plans.</p>
     </div>
-    <div class="deliverables">
-      <ul class="deliverables-list reveal">
-        <li>
-          <div class="deliverable-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          </div>
-          <div class="deliverable-content">
-            <h4>Responsive website or web app</h4>
-            <p>Looks great on desktop, tablet, and mobile. Tested across browsers. Built for real-world performance.</p>
-          </div>
-        </li>
-        <li>
-          <div class="deliverable-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
-          </div>
-          <div class="deliverable-content">
-            <h4>Clean source code you own</h4>
-            <p>HTML, CSS, and JavaScript (or React). Well-structured, commented, and easy to maintain. It's yours forever.</p>
-          </div>
-        </li>
-        <li>
-          <div class="deliverable-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <div class="deliverable-content">
-            <h4>Deployed to your domain</h4>
-            <p>We handle deployment so your site is live and accessible. Need a domain? We'll help you set one up.</p>
-          </div>
-        </li>
-        <li>
-          <div class="deliverable-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          </div>
-          <div class="deliverable-content">
-            <h4>One round of revisions</h4>
-            <p>After delivery, you can request changes. We'll refine colors, copy, layout, or functionality until you're satisfied.</p>
-          </div>
-        </li>
-        <li>
-          <div class="deliverable-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          <div class="deliverable-content">
-            <h4>48-hour delivery</h4>
-            <p>From the moment you submit your brief and payment, the clock starts. You'll have your site in two days or less.</p>
-          </div>
-        </li>
-      </ul>
-      <div class="deliverables-highlight reveal">
-        <h3>Custom code. Not templates.</h3>
-        <p>Every site we build is written from scratch. No WordPress, no Wix, no Squarespace, no cookie-cutter themes. Your site is unique because it was made just for you.</p>
-        <p>This means faster load times, cleaner code, and a site that actually stands out. You get professional results without the bloat.</p>
-        <div class="callout">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          <span>You keep full ownership of all code and assets. No lock-in, no recurring fees, no catch.</span>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
         </div>
+        <h3>Guided step-by-step process</h3>
+        <p>No blank-page anxiety. We walk you through every detail your plan needs.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 1 5 5c0 4-5 11-5 11S7 11 7 7a5 5 0 0 1 5-5Z"/><circle cx="12" cy="7" r="1"/></svg>
+        </div>
+        <h3>AI-powered content generation</h3>
+        <p>Intelligent drafts for each section, grounded in your specific business context.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="9" x2="9" y1="21" y2="9"/></svg>
+        </div>
+        <h3>Professional formatting</h3>
+        <p>Structured, investor-ready output that follows industry best practices.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        </div>
+        <h3>Export-ready documents</h3>
+        <p>Copy your finished plan in a clean, shareable format ready for investors.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+        </div>
+        <h3>Edit and iterate</h3>
+        <p>Full control to refine AI-generated text. Regenerate any section at any time.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+        </div>
+        <h3>Multiple plans</h3>
+        <p>Create and manage separate plans for different ventures or iterations.</p>
       </div>
     </div>
   </div>
@@ -1096,303 +597,52 @@ img {
 
 <!-- PRICING -->
 <section class="section" id="pricing">
-  <div class="container">
-    <div class="reveal" style="text-align: center;">
-      <p class="section-label">Pricing</p>
-      <h2 class="section-title">Simple, transparent pricing</h2>
-      <p class="section-subtitle" style="margin: 0 auto;">One-time payment. No subscriptions. No hidden fees. Pick the tier that fits your project.</p>
-    </div>
-    <div class="pricing-grid">
-      <!-- Starter -->
-      <div class="pricing-card reveal">
-        <p class="pricing-tier">Starter</p>
-        <p class="pricing-name">Landing Page</p>
-        <p class="pricing-desc">One page, responsive, custom design. Perfect for launches and MVPs.</p>
-        <p class="pricing-price">CHF 249</p>
-        <p class="pricing-note">One-time payment</p>
-        <ul class="pricing-features">
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Single-page responsive website
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Custom design, no templates
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Clean HTML/CSS/JS source code
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Deployed to your domain
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            One round of revisions
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            48-hour delivery
-          </li>
-        </ul>
-        <a href="https://buy.stripe.com/8x24gB9WU6ZT6cxbC3gEg01" class="pricing-btn" target="_blank" rel="noopener noreferrer">Order now</a>
-      </div>
-      <!-- Growth -->
-      <div class="pricing-card featured reveal">
-        <p class="pricing-tier">Growth</p>
-        <p class="pricing-name">Multi-Page Website</p>
-        <p class="pricing-desc">Up to 5 pages with contact forms and smooth animations.</p>
-        <p class="pricing-price">CHF 499</p>
-        <p class="pricing-note">One-time payment</p>
-        <ul class="pricing-features">
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Up to 5 responsive pages
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Custom design, no templates
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Contact forms and animations
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Clean HTML/CSS/JS source code
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Deployed to your domain
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            One round of revisions
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            48-hour delivery
-          </li>
-        </ul>
-        <a href="https://buy.stripe.com/7sYaEZ9WU3NHbwRcG7gEg00" class="pricing-btn" target="_blank" rel="noopener noreferrer">Order now</a>
-      </div>
-      <!-- Pro -->
-      <div class="pricing-card reveal">
-        <p class="pricing-tier">Pro</p>
-        <p class="pricing-name">Web App</p>
-        <p class="pricing-desc">Interactive features, dashboards, or complex custom functionality.</p>
-        <p class="pricing-price">CHF 999</p>
-        <p class="pricing-note">One-time payment</p>
-        <ul class="pricing-features">
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Full web app or complex site
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Custom design, no templates
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Interactive features and dashboards
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            React or vanilla JS source code
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            Deployed to your domain
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            One round of revisions
-          </li>
-          <li>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3.5 3.5L13 5"/></svg>
-            48-hour delivery
-          </li>
-        </ul>
-        <a href="https://buy.stripe.com/8x2bJ39WUbg9gRbeOfgEg02" class="pricing-btn" target="_blank" rel="noopener noreferrer">Order now</a>
-      </div>
-    </div>
-    <p class="pricing-guarantee reveal">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>
-      14-day money-back guarantee. Secure payment via Stripe.
-    </p>
+  <div class="section-header">
+    <h2 class="display-font">Simple pricing</h2>
+    <p>Start for free. Upgrade when you need more.</p>
   </div>
-</section>
-
-<!-- INTAKE FORM -->
-<section class="section" id="contact">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-label">Start your project</p>
-      <h2 class="section-title">Tell us what you need</h2>
-      <p class="section-subtitle">Describe your project and we'll get started. It takes less than two minutes.</p>
+  <div class="pricing">
+    <div class="price-card">
+      <h3>Free</h3>
+      <div class="price-amount"><span class="currency">CHF</span> 0</div>
+      <div class="price-period">Forever free</div>
+      <ul class="price-features">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1 business plan</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>All 14 plan sections</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>AI-generated content</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Edit and review</li>
+      </ul>
+      <a href="https://www.perplexity.ai/computer/a/planforge-ai-business-plan-gen-CDXr6x9rSSumORG_.TtdRQ" class="btn-secondary">Get Started</a>
     </div>
-    <div class="form-wrapper">
-      <div class="form-info reveal">
-        <h3>Prefer email?</h3>
-        <p>If forms aren't your thing, send us a quick message describing what you need. Include any references, brand guidelines, or copy you already have. We'll take it from there.</p>
-        <a href="mailto:hello@shipfast.site" class="email-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
-          hello@shipfast.site
-        </a>
-        <div style="margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border);">
-          <h3 style="font-size: 18px; margin-bottom: 12px;">What happens next?</h3>
-          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">
-            1. You describe your project and choose a tier<br>
-            2. We review your brief and confirm scope<br>
-            3. You pay via Stripe (one-time, no subscription)<br>
-            4. We start building immediately<br>
-            5. You receive your finished site within 48 hours
-          </p>
-        </div>
-      </div>
-      <form class="intake-form reveal" action="mailto:hello@shipfast.site" method="post" enctype="text/plain">
-        <div class="form-group">
-          <label for="name">Your name</label>
-          <input type="text" id="name" name="Name" required placeholder="Jane Smith">
-        </div>
-        <div class="form-group">
-          <label for="email">Your email</label>
-          <input type="email" id="email" name="Email" required placeholder="jane@example.com">
-        </div>
-        <div class="form-group">
-          <label for="tier">Which tier interests you?</label>
-          <select id="tier" name="Tier">
-            <option value="">Select a tier</option>
-            <option value="Starter (CHF 249)">Starter - Landing Page (CHF 249)</option>
-            <option value="Growth (CHF 499)">Growth - Multi-Page Website (CHF 499)</option>
-            <option value="Pro (CHF 999)">Pro - Web App (CHF 999)</option>
-            <option value="Not sure yet">Not sure yet</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="project">Describe your project</label>
-          <textarea id="project" name="Project" required placeholder="What kind of site or app do you need? Share any details: purpose, target audience, features, references, existing brand assets..."></textarea>
-        </div>
-        <div class="form-submit">
-          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-            Send project brief
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </button>
-        </div>
-      </form>
+    <div class="price-card featured">
+      <h3>Pro</h3>
+      <div class="price-amount"><span class="currency">CHF</span> 49</div>
+      <div class="price-period">One-time payment</div>
+      <ul class="price-features">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unlimited business plans</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>All 14 plan sections</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>AI-generated content</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority generation speed</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>PDF export</li>
+      </ul>
+      <a href="https://buy.stripe.com/8x24gB9WU6ZT6cxbC3gEg01" class="btn-primary">Buy Pro</a>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="section" id="faq">
-  <div class="container">
-    <div class="reveal" style="text-align: center;">
-      <p class="section-label">FAQ</p>
-      <h2 class="section-title">Common questions</h2>
-    </div>
-    <div class="faq-grid">
-      <div class="faq-item reveal">
-        <h3>What tech stack do you use?</h3>
-        <p>We use clean HTML, CSS, and JavaScript for most projects. For more complex apps, we use React. No WordPress, no page builders, no bloated frameworks. Just fast, maintainable code.</p>
-      </div>
-      <div class="faq-item reveal">
-        <h3>How does the 48-hour delivery work?</h3>
-        <p>Once you submit your brief and payment, the timer starts. We build your site and deliver it within 48 hours. Complex Pro-tier projects may take slightly longer, but we'll let you know upfront.</p>
-      </div>
-      <div class="faq-item reveal">
-        <h3>What if I need changes after delivery?</h3>
-        <p>One round of revisions is included with every tier. Need more? We're happy to make additional changes at a fair hourly rate. Just reach out.</p>
-      </div>
-      <div class="faq-item reveal">
-        <h3>Who owns the code?</h3>
-        <p>You do. 100%. After delivery, the source code is entirely yours. Host it anywhere, modify it freely, hire someone else to extend it. No lock-in, no licensing restrictions.</p>
-      </div>
-      <div class="faq-item reveal">
-        <h3>Is there a refund policy?</h3>
-        <p>Yes. We offer a 14-day money-back guarantee in accordance with EU consumer protection law. If you're not satisfied, contact us within 14 days of delivery for a full refund.</p>
-      </div>
-      <div class="faq-item reveal">
-        <h3>Can I see examples of your work?</h3>
-        <p>Absolutely. Email us at hello@shipfast.site and we'll send you relevant examples based on the type of project you're planning. Every project is custom, so we match references to your needs.</p>
-      </div>
-    </div>
-  </div>
+<!-- CTA -->
+<section class="section" style="text-align: center; padding-bottom: 6rem;">
+  <h2 class="display-font" style="font-size: 1.75rem; margin-bottom: 1rem;">Ready to build your business plan?</h2>
+  <p style="color: var(--stone-500); max-width: 420px; margin: 0 auto 2rem;">Join founders who are using PlanForge to create professional, investor-ready business plans in minutes.</p>
+  <a href="https://www.perplexity.ai/computer/a/planforge-ai-business-plan-gen-CDXr6x9rSSumORG_.TtdRQ" class="btn-primary">
+    Start Free
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  </a>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <span class="footer-brand">ShipFast</span>
-        <span class="footer-entity">Kramer Media Consulting, Switzerland</span>
-      </div>
-      <div class="footer-right">
-        <a href="mailto:hello@shipfast.site">hello@shipfast.site</a>
-        <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
-      </div>
-    </div>
-  </div>
+<footer>
+  <p>&copy; 2025 PlanForge by ShipFast &middot; <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></p>
 </footer>
-
-<script>
-// Nav scroll effect
-const nav = document.getElementById('nav');
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  if (scrollY > 20) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
-  }
-  lastScroll = scrollY;
-}, { passive: true });
-
-// Mobile nav toggle
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-
-// Close mobile nav on link click
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-  });
-});
-
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      // Stagger animation
-      const delay = entry.target.dataset.delay || 0;
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, delay);
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -40px 0px'
-});
-
-document.querySelectorAll('.reveal').forEach((el, i) => {
-  // Add stagger delay to siblings
-  const parent = el.parentElement;
-  const siblings = Array.from(parent.querySelectorAll(':scope > .reveal'));
-  const siblingIndex = siblings.indexOf(el);
-  if (siblingIndex > 0) {
-    el.dataset.delay = siblingIndex * 80;
-  }
-  observer.observe(el);
-});
-</script>
 
 </body>
 </html>
